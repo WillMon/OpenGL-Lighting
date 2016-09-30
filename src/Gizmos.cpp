@@ -33,8 +33,7 @@ Gizmos::Gizmos(unsigned int a_maxLines, unsigned int a_maxTris,
 	const char* fsSource = "#version 150\n \
 					 in vec4 vColour; \
                      out vec4 FragColor; \
-					 void main()	{ FragColor = vColour; }";
-    
+					 void main()	{ FragColor = vColour ; }";
     
 	unsigned int vs = glCreateShader(GL_VERTEX_SHADER);
 	unsigned int fs = glCreateShader(GL_FRAGMENT_SHADER);

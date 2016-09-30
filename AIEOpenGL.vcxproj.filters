@@ -101,6 +101,9 @@
     <ClInclude Include="src\Mesh.h">
       <Filter>Base</Filter>
     </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>Base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
