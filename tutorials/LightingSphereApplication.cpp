@@ -140,7 +140,7 @@ void LightingSphereApplication::draw() {
 	int matUniform = m_shader->getUniform("ProjectionViewModel");
 	glUniformMatrix4fv(matUniform, 1, GL_FALSE, &pvm[0][0]);
 
-	// bind the model matrix
+	// bind the model matrixd
 	matUniform = m_shader->getUniform("ModelMatrix");
 	glUniformMatrix4fv(matUniform, 1, GL_FALSE, &m_modelMatrix[0][0]);
 

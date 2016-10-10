@@ -47,7 +47,7 @@ bool LightingOBJApplication::startup() {
 	m_mesh = new Mesh();
 	if (m_mesh->loadObj("./models/stanford/dragon.obj", true, true) == false)
 		return false;
-	
+
 	// load a shader
 	m_shader = new Shader();
 	if (m_shader->loadShader(GL_VERTEX_SHADER, "./shaders/phong.vert") == false) {
@@ -81,7 +81,7 @@ void LightingOBJApplication::shutdown() {
 }
 
 bool LightingOBJApplication::update(float deltaTime) {
-	
+
 	// close the application if the window closes or we press escape
 	if (glfwWindowShouldClose(m_window) ||
 		glfwGetKey(m_window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -103,9 +103,9 @@ bool LightingOBJApplication::update(float deltaTime) {
 	// for now let's add a grid to the gizmos
 	for (int i = 0; i < 21; ++i) {
 		Gizmos::addLine(vec3(-10 + i, 0, 10), vec3(-10 + i, 0, -10),
-						i == 10 ? white : black);
+			i == 10 ? white : black);
 		Gizmos::addLine(vec3(10, 0, -10 + i), vec3(-10, 0, -10 + i),
-						i == 10 ? white : black);
+			i == 10 ? white : black);
 	}
 
 	Gizmos::addTransform(mat4(1));
