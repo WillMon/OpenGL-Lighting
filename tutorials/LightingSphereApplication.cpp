@@ -52,7 +52,7 @@ bool LightingSphereApplication::startup() {
 	// generate a sphere with radius 5
 	generateSphere(32, 32, m_vao, m_vbo, m_ibo, m_indexCount);
 	m_modelMatrix = glm::scale(vec3(5));
-		
+
 	// load a shader
 	m_shader = new Shader();
 	if (m_shader->loadShader(GL_VERTEX_SHADER, "./bin/shaders/phong.vert") == false) {
@@ -89,7 +89,7 @@ void LightingSphereApplication::shutdown() {
 }
 
 bool LightingSphereApplication::update(float deltaTime) {
-	
+
 	// close the application if the window closes or we press escape
 	if (glfwWindowShouldClose(m_window) ||
 		glfwGetKey(m_window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -111,9 +111,9 @@ bool LightingSphereApplication::update(float deltaTime) {
 	// for now let's add a grid to the gizmos
 	for (int i = 0; i < 21; ++i) {
 		Gizmos::addLine(vec3(-10 + i, 0, 10), vec3(-10 + i, 0, -10),
-						i == 10 ? white : black);
+			i == 10 ? white : black);
 		Gizmos::addLine(vec3(10, 0, -10 + i), vec3(-10, 0, -10 + i),
-						i == 10 ? white : black);
+			i == 10 ? white : black);
 	}
 
 	Gizmos::addTransform(mat4(1));
@@ -195,8 +195,8 @@ void LightingSphereApplication::draw() {
 }
 
 void LightingSphereApplication::generateSphere(unsigned int segments, unsigned int rings,
-											   unsigned int& vao, unsigned int& vbo, unsigned int& ibo,
-											   unsigned int& indexCount) {
+	unsigned int& vao, unsigned int& vbo, unsigned int& ibo,
+	unsigned int& indexCount) {
 
 	unsigned int vertCount = (segments + 1) * (rings + 2);
 	indexCount = segments * (rings + 1) * 6;
@@ -265,17 +265,21 @@ void LightingSphereApplication::generateSphere(unsigned int segments, unsigned i
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(AIEVertex), 0);
 
+	// colour
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(AIEVertex), (void*)(sizeof(vec4)));
+
 	// normals
 	glEnableVertexAttribArray(2);
-	glVertexAttribPointer(2, 4, GL_FLOAT, GL_TRUE, sizeof(AIEVertex), (void*)(sizeof(vec4)*2));
+	glVertexAttribPointer(2, 4, GL_FLOAT, GL_TRUE, sizeof(AIEVertex), (void*)(sizeof(vec4) * 2));
 
 	// texcoords
 	glEnableVertexAttribArray(3);
-	glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, sizeof(AIEVertex), (void*)(sizeof(vec4)*3));
+	glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, sizeof(AIEVertex), (void*)(sizeof(vec4) * 3));
 
 	// tangents
 	glEnableVertexAttribArray(4);
-	glVertexAttribPointer(4, 4, GL_FLOAT, GL_TRUE, sizeof(AIEVertex), (void*)(sizeof(vec4)*3+sizeof(vec2)));
+	glVertexAttribPointer(4, 4, GL_FLOAT, GL_TRUE, sizeof(AIEVertex), (void*)(sizeof(vec4) * 3 + sizeof(vec2)));
 
 	// safety
 	glBindVertexArray(0);
